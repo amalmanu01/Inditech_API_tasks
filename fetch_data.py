@@ -1,0 +1,17 @@
+import requests as rq
+
+API_URL = "http://api.petpooja.com/V1/orders/get_sales_data/?app_key=srd2neaq1xg7bzc6uyk5jmwv98o4tpfh&app_secret=fd08934c5224af4c975015e599d60a74bf857b4a&access_token=0442e1ee9899bc3806f1a40be490af4ec5c6602a&restID=51wok2zxnsad&from_date=2025-01-20%2000:00:00&to_date=2025-01-20%2023:59:59"
+
+def fetch_sales_data():
+    x = rq.get(API_URL)
+    data = x.json()
+    records = data.get("Records", [])
+    record = records[0]
+    
+    print(data)
+    print("KEYS:")
+    print(record.keys())
+    return data
+
+if __name__ == "__main__":
+    fetch_sales_data()
